@@ -22,7 +22,7 @@ struct Reward {
     sf::Clock clock;
 };
 
-sf::Text createText(sf::Font& font, const std::string& str, int size = 26, sf::Color color = sf::Color::White) {
+sf::Text createText(sf::Font& font, const std::string& str, int size = 36, sf::Color color = sf::Color::White) {
     sf::Text text;
     text.setFont(font);
     text.setString(str);
