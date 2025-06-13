@@ -3,12 +3,10 @@
 #include <vector>
 #include <cmath>
 #include <cstdint>
-// #include <optional> // No longer needed for SFML 2.6.2 event handling
 #include <cstdlib>
 #include <ctime>
 #include <string>
 #include <algorithm>
-// #include <filesystem> // Replaced with std::string for wider compatibility
 #include <iostream>
 
 // Definir M_PI si no está definido
