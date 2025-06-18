@@ -11,7 +11,14 @@
 #include <fstream>           // Leer y escribir archivos
 #include <algorithm>         // Funciones como sort, find, etc.
 #include <iostream>          // Entrada/salida (cout, cin)
-#include <map>               // Contenedor tipo mapa, útil para los niveles de dificultad
+#include <map>
+
+struct Nota {
+    int tiempo_ms;
+    int columna;
+    bool mostrada = false;
+};
+               // Contenedor tipo mapa, útil para los niveles de dificultad
 
 // Define PI si no esta definido 
 #ifndef M_PI
@@ -168,6 +175,16 @@ void centerOrigin(sf::Text &text) // Esta funcion es para centrar el origen del 
 int main() // Función principal del programa, donde se inicia el juego y se maneja la lógica principal
 {
 
+    std::vector<Nota> notas;
+    std::ifstream archivo("hard_beats.txt");
+    int t, c;
+    while (archivo >> t >> c) {
+        notas.push_back({t, c});
+    }
+
+    sf::Clock reloj;
+
+
     srand(static_cast<unsigned int>(time(nullptr))); // Inicializar la semilla para números aleatorios (esto es para que los numeros aleatorios sean diferentes cada vez que se ejecuta el programa)
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Piano Tiles Avanzado"); // Crear la ventana del juego con el tamaño especificado y el título
     window.setFramerateLimit(60); // Limitar la tasa de fotogramas a 60 FPS (esto es para que el juego no vaya demasiado rapido y se vea fluido)
@@ -305,6 +322,17 @@ int main() // Función principal del programa, donde se inicia el juego y se man
     }
     while (window.isOpen())
     {
+
+        // --- Sincronización de notas con el tiempo ---
+        float tiempo_actual = reloj.getElapsedTime().asMilliseconds();
+        for (auto& nota : notas) {
+            if (!nota.mostrada && tiempo_actual >= nota.tiempo_ms - 1500) {
+                // Aquí se debe crear la tecla y posicionarla según nota.columna
+                // Por ejemplo: crearTecla(nota.columna);
+                nota.mostrada = true;
+            }
+        }
+
         float dt = clock.restart().asSeconds();
 
         sf::Event event;

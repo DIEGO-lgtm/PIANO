@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -I"C:/msys64/mingw64/include"
-LDFLAGS = -L"C:/msys64/mingw64/lib" -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+CXXFLAGS = -std=c++17 -Wall -I/opt/homebrew/opt/sfml@2/include
+LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 SRC = src/arro.cpp
 OBJ = $(SRC:.cpp=.o)
@@ -10,9 +10,6 @@ all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CXX) $(OBJ) -o $@ $(LDFLAGS)
-
-src/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(TARGET)
