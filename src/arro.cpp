@@ -50,13 +50,7 @@ enum GameState
     GAME_OVER // Juego terminado (osea cuando el jugador a perdido) este estado se muestra cuando el jugador pierde
 };
 
-// Los niveles de dificultad del juego (facil, medio, dificil)
-enum Difficulty
-{
-    EASY, // Fácil
-    MEDIUM, // Medio
-    HARD// Difícil
-};
+#include <Difficulty.hpp>
 
 // La configuración de cada nivel de dificultad (osea la velocidad de las fichas y el intervalo entre fichas)
 struct DifficultySettings

@@ -1,0 +1,50 @@
+@startuml
+
+enum GameState {
+    SHOWING_MENU
+    PLAYING
+    GAME_OVER
+}
+
+enum Difficulty {
+    EASY
+    MEDIUM
+    HARD
+}
+
+class Nota {
+    + tiempo_ms: int
+    + columna: int
+    + mostrada: bool
+}
+
+class Tile {
+    + columna: int
+    + activa: bool
+}
+
+class DifficultySettings {
+    + tileSpeed: float
+    + spawnInterval: float
+}
+
+class MainApplication {
+    - dificultad: Difficulty
+    - estado: GameState
+    - notas: List<Nota>
+    - tiles: List<Tile>
+    - sonidos: List<string>
+    - puntuacion: int
+    + main():
+class menu 
+class teclas
+class letras 
+
+menu *-- niveles
+teclas *-- letras 
+MainApplication --> Tile : usa
+MainApplication --> Difficulty
+MainApplication --> GameState
+MainApplication --> DifficultySettings
+
+@enduml
