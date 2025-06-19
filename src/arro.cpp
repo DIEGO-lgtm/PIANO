@@ -42,7 +42,7 @@ const float FALL_DISTANCE = 600.f; // Distancia que recorre una ficha al caer
 const float FALL_SPEED = 300.f; // Velocidad de caída (pixeles por segundo)
 const float FALL_TIME = FALL_DISTANCE / FALL_SPEED; // Tiempo que tarda una ficha en caer (esto depende de la distancia y la velocidad )
 
-#include <GameState.hpp> 
+#include <GameState.hpp> // Biblioteca SFML para gráficos (ventanas, formas, texto, etc.)
 
 #include <Difficulty.hpp>
 
