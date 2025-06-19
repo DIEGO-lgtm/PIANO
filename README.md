@@ -124,7 +124,48 @@ Para MSYS2, cambia `INCLUDES` y `LIBS` según corresponda (`/mingw64/include`, `
 
 ---
 
+## 📖 Manual de Usuario
+
+### 🎮 Objetivo del juego
+
+Presiona las teclas correctas sincronizadas con el ritmo de la música para sumar puntos. Si fallas muchas veces, el juego termina. ¡Acumula estrellas y supera tu récord!
+
+### ⌨️ Controles
+
+| Tecla | Acción                      |
+|-------|-----------------------------|
+| A     | Tocar la columna izquierda  |
+| S     | Tocar la columna central-izquierda |
+| D     | Tocar la columna central-derecha |
+| F     | Tocar la columna derecha    |
+| ESC   | Salir del juego             |
+
+### 🕹️ Cómo jugar
+
+1. **Inicia el juego** ejecutando el binario (`./piano` o `piano.exe`).
+2. **Selecciona una dificultad**: Fácil, Medio o Difícil.
+3. Comenzará la canción. **Observa cómo bajan las notas** (tiles).
+4. **Presiona la tecla correspondiente** cuando una nota alcance la parte inferior de la pantalla.
+5. **Gana puntos y estrellas** por cada nota acertada.
+6. **El juego termina** cuando la canción acaba o si fallas demasiadas notas.
+
+### ⭐ Sistema de puntuación
+
+- +10 puntos por nota correcta
+- Combo de 10: Gana 1 estrella
+- Combo de 20: Gana 2 estrellas
+- Fallos: -1 vida por cada nota perdida
+- 3 vidas perdidas: Fin del juego
+
+### 🧠 Consejos
+
+- Usa audífonos para una mejor sincronización con la música.
+- Comienza con el modo Fácil para practicar.
+- Observa el patrón de los tiles para anticiparte.
+- ¡No presiones demasiado pronto o tarde!
+
+---
+
 ## 👤 Autores
 **Diego Pérez 24110241**  
-**Raymundo Lecuona* 24110*
----
+**Raymundo Lecuona* 24110274**
