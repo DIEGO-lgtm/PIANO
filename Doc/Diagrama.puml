@@ -89,7 +89,7 @@ MainApplication "1" o-- "*" LevelInfo : tiene
 MainApplication "1" o-- "*" Nota : puede usar
 MainApplication "1" o-- "1" Menu : tiene
 MainApplication "1" o-- "1" Teclas : tiene
-MainApplication "1" o-- "1" Letras : tiene
+MainApplication "1" o-- "1" Letras : tien
 MainApplication --> GameState
 MainApplication --> Difficulty
 

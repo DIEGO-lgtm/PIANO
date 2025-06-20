@@ -13,12 +13,7 @@
 #include <iostream>
 #include <map>
 
-struct Nota
-{
-    int tiempo_ms;
-    int columna;
-    bool mostrada = false;
-};
+
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -40,12 +35,10 @@ const float FALL_TIME = FALL_DISTANCE / FALL_SPEED;
 
 #include <GameState.hpp>
 #include <Difficulty.hpp>
+#include <Nota.hpp>
+#include <DifficultySettings.hpp>
 
-struct DifficultySettings
-{
-    float tileSpeed;
-    float spawnInterval;
-};
+
 
 struct Tile
 {
@@ -69,8 +62,7 @@ bool generateSineWave(sf::SoundBuffer &buffer, float frequency)
     for (size_t i = 0; i < samples.size(); ++i)
     {
         samples[i] = static_cast<sf::Int16>(
-            AMPLITUDE * std::sin(2 * M_PI * frequency * i / SAMPLE_RATE)
-        );
+            AMPLITUDE * std::sin(2 * M_PI * frequency * i / SAMPLE_RATE));
     }
     return buffer.loadFromSamples(samples.data(), samples.size(), 1, SAMPLE_RATE);
 }
@@ -195,7 +187,7 @@ int main()
     starSprite.setPosition(SCREEN_WIDTH - 70.f, 10.f);
     sf::Text starMultiplierText("x1", font, 28);
     starMultiplierText.setFillColor(sf::Color::Yellow);
-    starMultiplierText.setPosition(SCREEN_WIDTH - 140.f, 10.f);
+    starMultiplierText.setPosition(SCREEN_WIDTH - 130.f, 10.f);
 
     std::vector<Tile> activeTiles;
 
@@ -537,9 +529,9 @@ int main()
                 if (timer > 0.f)
                     timer -= dt;
                 if (music.getStatus() == sf::Music::Stopped && beatIndex >= beatTimes.size())
-{
-    currentState = GAME_WIN;
-}
+                {
+                    currentState = GAME_WIN;
+                }
             }
         }
 
@@ -612,11 +604,11 @@ int main()
             window.draw(gameOverText);
             window.draw(restartText);
             break;
-            
-    case GAME_WIN:
-        window.draw(menuBackgroundSprite);
-        window.draw(congratsSprite);
-        break;
+
+        case GAME_WIN:
+            window.draw(menuBackgroundSprite);
+            window.draw(congratsSprite);
+            break;
         }
 
         window.display();
