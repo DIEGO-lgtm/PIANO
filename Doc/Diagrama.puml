@@ -1,9 +1,11 @@
-@startuml
+@startuml keyrush
 
 enum GameState {
+    SHOWING_START
     SHOWING_MENU
     PLAYING
     GAME_OVER
+    GAME_WIN
 }
 
 enum Difficulty {
@@ -12,39 +14,83 @@ enum Difficulty {
     HARD
 }
 
-class Nota {
-    + tiempo_ms: int
-    + columna: int
-    + mostrada: bool
+' --- CLASES PRINCIPALES ---
+class MainApplication {
+    - window: sf::RenderWindow
+    - estado: GameState
+    - nivelActual: int
+    - levels: List<LevelInfo>
+    - beatTimes: List<float>
+    - beatIndex: size_t
+    - activeTiles: List<Tile>
+    - font: sf::Font
+    - music: sf::Music
+    - score: int
+    - clock: sf::Clock
+    - menu: Menu
+    - teclas: Teclas
+    - letras: Letras
+    + main()
+    + loadLevel(levelIndex: int)
+    + handleEvents()
+    + update(dt: float)
+    + draw()
+}
+
+class LevelInfo {
+    + beatsFile: string
+    + musicFile: string
+    + bpm: float
+    + LevelInfo(beatsFile, musicFile, bpm)
 }
 
 class Tile {
     + columna: int
     + activa: bool
+    + shape: sf::RectangleShape
+    + text: sf::Text
+    + Tile(columna: int, font: sf::Font, columnWidth: float, tileHeight: float)
+    + getCharForColumn(col: int): string
+    + centerOrigin(text: sf::Text)
 }
 
-class DifficultySettings {
-    + tileSpeed: float
-    + spawnInterval: float
+class Nota {
+    + tiempo_ms: int
+    + columna: int
+    + mostrada: bool
+    + Nota(tiempo_ms: int, columna: int)
 }
 
-class MainApplication {
-    - dificultad: Difficulty
-    - estado: GameState
-    - notas: List<Nota>
-    - tiles: List<Tile>
-    - sonidos: List<string>
-    - puntuacion: int
-    + main():
-class menu 
-class teclas
-class letras 
+class Menu {
+    - promptText: sf::Text
+    - subtitleText: sf::Text
+    - easyText: sf::Textjava -version
+javac -version
 
-menu *-- niveles
-teclas *-- letras 
-MainApplication --> Tile : usa
-MainApplication --> Difficulty
+    - mediumText: sf::Text
+    - hardText: sf::Text
+    + show()
+    + handleInput()
+}
+
+class Teclas {
+    - teclas: List<char>
+    + checkInput(key: char): bool
+}
+
+class Letras {
+    - letras: List<char>
+    + getLetra(columna: int): char
+}
+
+' --- RELACIONES ---
+MainApplication "1" o-- "*" Tile : usa
+MainApplication "1" o-- "*" LevelInfo : tiene
+MainApplication "1" o-- "*" Nota : puede usar
+MainApplication "1" o-- "1" Menu : tiene
+MainApplication "1" o-- "1" Teclas : tiene
+MainApplication "1" o-- "1" Letras : tiene
 MainApplication --> GameState
-MainApplication --> DifficultySettings
+MainApplication --> Difficulty
 
 @enduml

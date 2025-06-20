@@ -5,5 +5,6 @@ enum GameState
     SHOWING_START,
     SHOWING_MENU, // Mostrando menú (inicio del juego al momento de inciar la partida)
     PLAYING, // Jugando (cuando el jugadador esta en partida)
-    GAME_OVER // Juego terminado (osea cuando el jugador a perdido) este estado se muestra cuando el jugador pierde
+    GAME_OVER,
+    GAME_WIN // Juego terminado (osea cuando el jugador a perdido) este estado se muestra cuando el jugador pierde
 };
